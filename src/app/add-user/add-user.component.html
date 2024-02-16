@@ -1,0 +1,37 @@
+
+<div style="margin-left:20px;">
+    <h3>Add New Shop</h3>
+    <div class="example-container">
+      <form [formGroup]="addShopFormGroup"  (ngSubmit)="onSubmit()" class="example-form">
+        <p>
+            <mat-form-field appearance="outline" class="example-full-width m-2 ">
+              <mat-label>User Name</mat-label>
+              <input matInput  formControlName="name" >
+              <mat-error *ngIf="checkError('name', 'required')">User Name is required</mat-error>
+              <mat-error *ngIf="checkError('name', 'minlength')">User Name should be more than 5 characters</mat-error>
+              <mat-error *ngIf="checkError('name', 'maxlength')">User Name should be less than 20 characters</mat-error>
+            </mat-form-field>
+              <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input matInput  formControlName="email"   pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}">
+                    <mat-error *ngIf="checkError('email', 'required')">Email is required</mat-error>
+                    <mat-error *ngIf="checkError('email', 'maxlength')">Email Address should be less than 200 characters</mat-error>
+                    <mat-error *ngIf="addShopFormGroup.controls['email'].hasError('pattern')">Please enter a valid email address
+                  </mat-error>
+              </mat-form-field>  </p>
+                <p>
+                  <mat-form-field appearance="outline" class="example-full-width m-2 ">
+                    <mat-label>Role</mat-label>
+                    <input matInput  formControlName="role" >
+                    <mat-error *ngIf="checkError('role', 'required')">Role is required</mat-error>
+                    <mat-error *ngIf="checkError('role', 'minlength')">Role should be more than 5 characters</mat-error>
+                    <mat-error *ngIf="checkError('role', 'maxlength')">Role should be less than 50 characters</mat-error>
+                  </mat-form-field>
+                </p>
+                <p><button mat-raised-button mat-dialog-close > Close</button>
+                  <button type="submit"  class="btn btn-primary"  >Submit</button>
+              </p>           
+        
+      </form>
+      </div>
+    </div>
